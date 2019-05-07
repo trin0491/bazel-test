@@ -1,0 +1,32 @@
+package(default_visibility = ["//visibility:private"])
+
+load("@build_bazel_rules_nodejs//:defs.bzl", "rollup_bundle")
+load("@npm_bazel_typescript//:index.bzl", "ts_library")
+
+ts_library(
+    name = "src",
+    srcs = glob(["*.ts"]),
+    deps = [
+        "//src/a",
+        "//src/b",
+        "//src/c",
+    ],
+)
+
+rollup_bundle(
+    name = "bundle",
+    srcs = [
+    ],
+    entry_point = "src/index.js",
+    deps = [
+        ":src",
+    ],
+)
+
+filegroup(
+    name = "bundle-umd",
+    srcs = [
+        ":bundle",
+    ],
+    output_group = "umd_min",
+)

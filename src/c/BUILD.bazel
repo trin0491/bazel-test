@@ -1,0 +1,12 @@
+package(default_visibility = ["//visibility:private"])
+
+load("@npm_bazel_typescript//:index.bzl", "ts_library")
+
+ts_library(
+    name = "c",
+    srcs = glob(["*.ts"]),
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//src/a",
+    ],
+)

@@ -28,6 +28,9 @@ ts_library(
 
 ts_web_test_suite(
     name = "test",
+    browsers = [
+        "@io_bazel_rules_webtesting//browsers:chromium-local",
+    ],
     deps = [
         ":test_lib",
     ],

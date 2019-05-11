@@ -11,7 +11,7 @@ ts_library(
     ),
     visibility = ["//:__subpackages__"],
     deps = [
-        "//src/b",
+        "//main/core/src/b",
     ],
 )
 

@@ -1,0 +1,38 @@
+package(default_visibility = ["//visibility:private"])
+
+load("@build_bazel_rules_nodejs//:defs.bzl", "rollup_bundle", "npm_package")
+load("@npm_bazel_typescript//:index.bzl", "ts_library")
+
+ts_library(
+    name = "index",
+    srcs = ["index.ts"],
+    deps = [
+        "//main/core/src/a",
+        "//main/core/src/b",
+        "//main/core/src/c",
+    ],
+)
+
+rollup_bundle(
+    name = "fx-js.core",
+    srcs = [
+    ],
+    entry_point = "main/core/index",
+    deps = [
+        ":index",
+    ],
+)
+
+filegroup(
+    name = "fx-js.core.umd",
+    srcs = [
+        ":fx-js.core",
+    ],
+    output_group = "umd_min",
+)
+
+npm_package(
+    name = "core",
+    srcs = ["package.json"],
+    deps = ["fx-js.core.umd"]
+)

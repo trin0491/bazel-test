@@ -7,6 +7,6 @@ ts_library(
     srcs = glob(["*.ts"]),
     visibility = ["//:__subpackages__"],
     deps = [
-        "//src/a",
+        "//main/core/src/a",
     ],
 )

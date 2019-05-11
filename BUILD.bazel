@@ -7,7 +7,7 @@ exports_files(
 
 ts_config(
     name = "tsconfig-test",
-    visibility = ["//visibility:public"],
     src = "tsconfig-test.json",
+    visibility = ["//visibility:public"],
     deps = [":tsconfig.json"],
 )

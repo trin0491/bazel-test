@@ -14,7 +14,7 @@ ts_library(
 )
 
 rollup_bundle(
-    name = "fx-js.core",
+    name = "bundle",
     srcs = [
     ],
     entry_point = "main/core/index",
@@ -24,15 +24,16 @@ rollup_bundle(
 )
 
 filegroup(
-    name = "fx-js.core.umd",
+    name = "bundle.umd",
     srcs = [
-        ":fx-js.core",
+        ":bundle",
     ],
-    output_group = "umd_min",
+    output_group = "es5_umd_min",
 )
 
 npm_package(
-    name = "core",
+    name = "npm_package",
     srcs = ["package.json"],
-    deps = ["fx-js.core.umd"]
+    deps = [":index", ":bundle.umd"],
+    replacements = {"bazel_test/main/core/" : ""}
 )

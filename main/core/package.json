@@ -1,7 +1,6 @@
 {
   "name": "core",
   "version": "1.0.0",
-  "main": "./fx-js.core.min.umd.js",
   "dependencies": {
     
   }

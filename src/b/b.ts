@@ -1,5 +1,5 @@
 export class B {
-    doSomethingElse() {
-        console.log("B");
+    doSomething() {
+        return "B";
     }
 }

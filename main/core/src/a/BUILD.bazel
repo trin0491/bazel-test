@@ -22,15 +22,13 @@ ts_library(
     tsconfig = "//:tsconfig-test",
     deps = [
         ":a",
+        "//main/core/src/b",
         "@npm//@types/jasmine",
     ],
 )
 
 ts_web_test_suite(
     name = "test",
-    browsers = [
-        "@io_bazel_rules_webtesting//browsers:chromium-local",
-    ],
     deps = [
         ":test_lib",
     ],

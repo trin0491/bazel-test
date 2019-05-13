@@ -2,6 +2,7 @@ import {B} from "../b";
 
 export class A {
     doSomething() {
-        return "A";
+        const b = new B();
+        return "A" + b.doSomething();
     }
 }

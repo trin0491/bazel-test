@@ -11,8 +11,8 @@ build --strategy=TypeScriptCompile=worker
 build --symlink_prefix=dist/
 
 build --disk_cache=~/tmp/bazel
-
 build --experimental_ui
-test --experimental_ui
+#build --explain=bazel-explain.log --verbose_failures
 
+test --experimental_ui
 test --test_output=errors

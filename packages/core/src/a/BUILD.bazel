@@ -11,7 +11,7 @@ ts_library(
     ),
     visibility = ["//:__subpackages__"],
     deps = [
-        "//main/core/src/b",
+        "//packages/core/src/b",
     ],
 )
 
@@ -22,7 +22,7 @@ ts_library(
     tsconfig = "//:tsconfig-test",
     deps = [
         ":a",
-        "//main/core/src/b",
+        "//packages/core/src/b",
         "@npm//@types/jasmine",
     ],
 )

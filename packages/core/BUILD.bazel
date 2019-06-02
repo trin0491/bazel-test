@@ -7,9 +7,9 @@ ts_library(
     name = "core",
     srcs = ["index.ts"],
     deps = [
-        "//main/core/src/a",
-        "//main/core/src/b",
-        "//main/core/src/c",
+        "//packages/core/src/a",
+        "//packages/core/src/b",
+        "//packages/core/src/c",
     ],
 )
 
@@ -17,7 +17,7 @@ rollup_bundle(
     name = "bundle",
     srcs = [
     ],
-    entry_point = "main/core/index",
+    entry_point = "packages/core/index",
     deps = [
         ":core",
     ],
@@ -34,7 +34,7 @@ filegroup(
 npm_package(
     name = "npm_package",
     srcs = ["package.json"],
-    replacements = {"bazel_test/main/core/": ""},
+    replacements = {"bazel_test/packages/core/": ""},
     deps = [
         ":bundle.umd",
         ":core",

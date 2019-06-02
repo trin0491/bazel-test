@@ -16,3 +16,7 @@ build --experimental_ui
 
 test --experimental_ui
 test --test_output=errors
+
+# https://github.com/bazelbuild/rules_nodejs/wiki#migrating-to-rules_nodejs-030
+build --experimental_allow_incremental_repository_updates
+query --experimental_allow_incremental_repository_updates

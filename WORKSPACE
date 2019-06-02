@@ -1,6 +1,6 @@
 workspace(
     name = "bazel_test",
-    managed_directories = {"@npm": ["node_modules"]}
+    managed_directories = {"@npm": ["node_modules"]},
 )
 
 # RAP https://github.com/bazelbuild/rules_nodejs
@@ -15,7 +15,7 @@ http_archive(
 load("@build_bazel_rules_nodejs//:defs.bzl", "check_bazel_version", "node_repositories", "npm_install")
 
 check_bazel_version(
-    minimum_bazel_version = "0.26.0"
+    minimum_bazel_version = "0.26.0",
 )
 
 npm_install(

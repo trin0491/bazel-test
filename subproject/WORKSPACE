@@ -1,13 +1,8 @@
 workspace(
-    name = "bazel_test",
+    name = "subproject",
     managed_directories = {
         "@npm": ["node_modules"],
     },
-)
-
-local_repository(
-    name = "subproject",
-    path = "./subproject",
 )
 
 # RAP https://github.com/bazelbuild/rules_nodejs

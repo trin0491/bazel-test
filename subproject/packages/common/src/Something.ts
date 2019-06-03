@@ -1,5 +1,7 @@
+import * as _ from "lodash";
+
 export class Something {
   toString() {
-    return "Something";
+    return _.toLower("Something");
   }
 }

@@ -2,6 +2,7 @@ workspace(
     name = "bazel_test",
     managed_directories = {
         "@npm": ["node_modules"],
+        "@npm_subproject": ["subproject/node_modules"],
     },
 )
 
@@ -24,6 +25,12 @@ npm_install(
     name = "npm",
     package_json = "//:package.json",
     package_lock_json = "//:package-lock.json",
+)
+
+npm_install(
+    name = "npm_subproject",
+    package_json = "//subproject:package.json",
+    package_lock_json = "//subproject:package-lock.json",
 )
 
 load("@npm//:install_bazel_dependencies.bzl", "install_bazel_dependencies")

@@ -1,6 +1,1 @@
-load("@npm_bazel_typescript//:index.bzl", "ts_config")
-
-exports_files(
-    ["tsconfig.json"],
-    visibility = ["//visibility:public"],
-)
+# placeholder

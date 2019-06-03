@@ -5,11 +5,6 @@ workspace(
     },
 )
 
-local_repository(
-    name = "subproject",
-    path = "./subproject",
-)
-
 # RAP https://github.com/bazelbuild/rules_nodejs
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 

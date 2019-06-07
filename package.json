@@ -19,5 +19,8 @@
     "jasmine": "^3.4.0",
     "karma": "^4.1.0",
     "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

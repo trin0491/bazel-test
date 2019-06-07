@@ -20,3 +20,8 @@ test --test_output=errors
 # https://github.com/bazelbuild/rules_nodejs/wiki#migrating-to-rules_nodejs-030
 build --experimental_allow_incremental_repository_updates
 query --experimental_allow_incremental_repository_updates
+fetch --experimental_allow_incremental_repository_updates
+
+# don't download jdk and use the version bundled with bazel
+build --host_javabase=@local_jdk//:jdk --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_hostjdk8
+test --host_javabase=@local_jdk//:jdk --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_hostjdk8

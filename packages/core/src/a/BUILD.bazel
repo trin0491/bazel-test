@@ -32,4 +32,5 @@ karma_web_test_suite(
     deps = [
         ":test_lib",
     ],
+    config_file = "//:karma.conf.js"
 )

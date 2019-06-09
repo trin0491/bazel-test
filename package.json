@@ -5,7 +5,8 @@
   "scripts": {
     "build": "bazel build //...",
     "test": "bazel test //...",
-    "bazel:format": "find . -type f \\( -name WORKSPACE -or -name BUILD.bazel \\) ! -path \"*/node_modules/*\" | xargs buildifier"
+    "bazel:format": "find . -type f \\( -name WORKSPACE -or -name BUILD.bazel \\) ! -path \"*/node_modules/*\" | xargs buildifier",
+    "start": "node scripts/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,11 +14,14 @@
     "@bazel/bazel": "^0.26.0",
     "@bazel/buildifier": "^0.25.1",
     "@bazel/ibazel": "0.10.3",
-    "@bazel/karma": "~0.30.0",
-    "@bazel/typescript": "~0.30.0",
+    "@bazel/karma": "~0.31.0",
+    "@bazel/typescript": "~0.31.0",
     "@types/jasmine": "^3.3.13",
     "jasmine": "^3.4.0",
     "karma": "^4.1.0",
+    "karma-junit-reporter": "~1.2.0",
+    "karma-coverage-istanbul-instrumenter": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "~2.0.5",
     "typescript": "^3.4.5"
   },
   "dependencies": {

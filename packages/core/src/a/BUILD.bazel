@@ -29,8 +29,8 @@ ts_library(
 
 karma_web_test_suite(
     name = "test",
+    config_file = "//:karma.conf.js",
     deps = [
         ":test_lib",
     ],
-    config_file = "//:karma.conf.js"
 )

@@ -17,8 +17,8 @@ http_archive(
 
 http_archive(
     name = "io_bazel_rules_webtesting",
-    urls = ["http://localhost:3000/rules_webtesting-0.3.1.tar.gz"],
     sha256 = "f89ca8e91ac53b3c61da356c685bf03e927f23b97b086cc593db8edc088c143f",
+    urls = ["http://localhost:3000/rules_webtesting-0.3.1.tar.gz"],
 )
 
 http_archive(
@@ -88,4 +88,3 @@ browser_repositories()
 load("@npm_bazel_typescript//:defs.bzl", "ts_setup_workspace")
 
 ts_setup_workspace()
-

@@ -11,8 +11,8 @@ ts_library(
     ]),
     node_modules = "@npm_subproject//typescript:typescript__typings",
     deps = [
+        "@npm_subproject//@types/lodash",
         "@npm_subproject//lodash",
-        "@npm_subproject//@types/lodash"
     ],
 )
 

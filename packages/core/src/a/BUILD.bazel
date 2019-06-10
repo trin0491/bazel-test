@@ -3,12 +3,17 @@ package(default_visibility = ["//visibility:private"])
 load("@npm_bazel_typescript//:index.bzl", "ts_library")
 load("@npm_bazel_karma//:defs.bzl", "karma_web_test_suite")
 
-ts_library(
-    name = "a",
+filegroup(
+    name = "ts_src",
     srcs = glob(
         ["*.ts"],
         exclude = ["*.spec.ts"],
     ),
+)
+
+ts_library(
+    name = "a",
+    srcs = [":ts_src"],
     visibility = ["//:__subpackages__"],
     deps = [
         "//packages/core/src/b",
@@ -30,6 +35,7 @@ ts_library(
 karma_web_test_suite(
     name = "test",
     config_file = "//:karma.conf.js",
+    data = [":ts_src"],
     deps = [
         ":test_lib",
     ],

@@ -1,5 +1,13 @@
 # bazel-test
 
+## Caching
+
+In order to clean everything with the exception of the cache directory and shudown daemon:
+
+```shell script
+npx bazel clean --expunge
+```
+
 ## Unit tests
 
 The following executes all the tests in parallel with a headless browser:

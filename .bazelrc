@@ -1,6 +1,7 @@
-# Make TypeScript fast, by keeping a few copies of the
-# compiler running as daemons, and cache SourceFile AST's to reduce parse time.
-build --strategy=TypeScriptCompile=worker
+# RAP don't download jdk and use the version bundled with bazel
+build --host_javabase=@local_jdk//:jdk --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_hostjdk8
+test --host_javabase=@local_jdk//:jdk --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_hostjdk8
+run --host_javabase=@local_jdk//:jdk --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_hostjdk8
 
 # Don't create bazel-* symlinks in the WORKSPACE directory.
 # These require .gitignore and may scare users.
@@ -17,10 +18,3 @@ test --test_output=errors
 
 # https://github.com/bazelbuild/rules_nodejs/wiki#migrating-to-rules_nodejs-030
 common --experimental_allow_incremental_repository_updates
-
-# don't download jdk and use the version bundled with bazel
-build --host_javabase=@local_jdk//:jdk --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_hostjdk8
-test --host_javabase=@local_jdk//:jdk --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_hostjdk8
-run --host_javabase=@local_jdk//:jdk --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_hostjdk8
-
-test:debug --test_arg=--node_options=--inspect-brk --test_output=streamed --test_strategy=exclusive --test_timeout=9999 --nocache_test_results

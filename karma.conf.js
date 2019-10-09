@@ -23,7 +23,7 @@ module.exports = function(config) {
       produceSourceMap: true
     },
     coverageIstanbulReporter: {
-      reports: ['text-summary', 'html'],
+      reports: ['text-summary', 'html', 'lcov'],
       dir: path.join(OUTPUT_DIR, "coverage")
     }
   })

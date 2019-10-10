@@ -37,11 +37,11 @@ karma_web_test_suite(
     config_file = "//:karma.conf.js",
     data = [
         ":ts_src",
-        "@npm//karma-coverage-istanbul-instrumenter",
-        "@npm//karma-coverage-istanbul-reporter",
-        "@npm//karma-junit-reporter",
     ],
     deps = [
         ":test_lib",
+        "@npm//karma-coverage-istanbul-instrumenter",
+        "@npm//karma-coverage-istanbul-reporter",
+        "@npm//karma-junit-reporter",
     ],
 )

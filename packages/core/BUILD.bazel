@@ -3,6 +3,7 @@ package(default_visibility = ["//visibility:private"])
 load("@build_bazel_rules_nodejs//:index.bzl", "npm_package")
 load("@npm_bazel_rollup//:index.bzl", "rollup_bundle")
 load("@npm_bazel_typescript//:index.bzl", "ts_library")
+load("@npm_bazel_terser//:index.bzl", "terser_minified")
 
 ts_library(
     name = "core",
@@ -19,6 +20,7 @@ ts_library(
 rollup_bundle(
     name = "bundle",
     config_file = "rollup.config.js",
+    format = "umd",
     srcs = [
     ],
     entry_point = ":index.ts",
@@ -27,12 +29,17 @@ rollup_bundle(
     ],
 )
 
+terser_minified(
+    name = "bundle.min",
+    src = ":bundle.js",
+)
+
 npm_package(
     name = "npm_package",
     srcs = ["package.json"],
     replacements = {"bazel_test/packages/core/": ""},
     deps = [
-        ":bundle",
+        ":bundle.min",
         ":core",
     ],
 )

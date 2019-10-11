@@ -1,6 +1,8 @@
 {
   "name": "core",
   "version": "1.0.0",
+  "main": "bundle.umd.js",
+  "module": "bundle.esm.js",
   "dependencies": {
     
   }

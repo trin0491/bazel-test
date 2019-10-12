@@ -4,6 +4,7 @@ load("@build_bazel_rules_nodejs//:index.bzl", "npm_package")
 load("@npm_bazel_rollup//:index.bzl", "rollup_bundle")
 load("@npm_bazel_typescript//:index.bzl", "ts_library")
 load("@npm_bazel_terser//:index.bzl", "terser_minified")
+load("@npm_bazel_karma//:index.bzl", "karma_web_test_suite")
 
 ts_library(
     name = "core",
@@ -54,5 +55,19 @@ npm_package(
         ":bundle.umd.min",
         ":bundle.esm",
         ":core"
+    ],
+)
+
+karma_web_test_suite(
+    name = "test",
+    config_file = "//:karma.conf.js",
+    data = [
+    ],
+    deps = [
+        "//packages/core/src/a:test_lib",
+        "//packages/core/src/b:test_lib",
+        "@npm//karma-coverage-istanbul-instrumenter",
+        "@npm//karma-coverage-istanbul-reporter",
+        "@npm//karma-junit-reporter",
     ],
 )

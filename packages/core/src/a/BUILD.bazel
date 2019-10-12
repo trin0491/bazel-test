@@ -1,7 +1,6 @@
 package(default_visibility = ["//visibility:private"])
 
 load("@npm_bazel_typescript//:index.bzl", "ts_library")
-load("@npm_bazel_karma//:index.bzl", "karma_web_test_suite")
 
 filegroup(
     name = "ts_src",
@@ -24,24 +23,11 @@ ts_library(
     name = "test_lib",
     testonly = 1,
     srcs = glob(["*.spec.ts"]),
+    visibility = ["//:__subpackages__"],
     tsconfig = "//:tsconfig-test",
     deps = [
         ":a",
         "//packages/core/src/b",
         "@npm//@types/jasmine",
-    ],
-)
-
-karma_web_test_suite(
-    name = "test",
-    config_file = "//:karma.conf.js",
-    data = [
-        ":ts_src",
-    ],
-    deps = [
-        ":test_lib",
-        "@npm//karma-coverage-istanbul-instrumenter",
-        "@npm//karma-coverage-istanbul-reporter",
-        "@npm//karma-junit-reporter",
     ],
 )

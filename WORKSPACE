@@ -7,7 +7,6 @@ workspace(
     },
 )
 
-# RAP https://github.com/bazelbuild/rules_nodejs
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
@@ -15,37 +14,6 @@ http_archive(
     sha256 = "ad4be2c6f40f5af70c7edf294955f9d9a0222c8e2756109731b25f79ea2ccea0",
     urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/0.38.3/rules_nodejs-0.38.3.tar.gz"],
 )
-
-#http_archive(
-#    name = "io_bazel_rules_webtesting",
-#    sha256 = "f89ca8e91ac53b3c61da356c685bf03e927f23b97b086cc593db8edc088c143f",
-#    urls = ["http://localhost:3000/rules_webtesting-0.3.1.tar.gz"],
-#)
-#
-#http_archive(
-#    name = "bazel_skylib",
-#    sha256 = "2c62d8cd4ab1e65c08647eb4afe38f51591f43f7f0885e7769832fa137633dcb",
-#    strip_prefix = "bazel-skylib-0.7.0",
-#    urls = ["http://localhost:3000/bazel-skylib-0.7.0.tar.gz"],
-#)
-#
-## see jdk.WORKSPACE
-#http_archive(
-#    name = "remote_java_tools_darwin",
-#    sha256 = "83abe9bbc2ed450410a32368ce18d6ba6713aa0626c7bff0436799108f2a8ce3",
-#    urls = [
-#        "http://localhost:3000/java_tools_javac11_darwin-v1.0.zip",
-#    ],
-#)
-#
-## see coverage.WORKSPACE
-#http_archive(
-#    name = "remote_coverage_tools",
-#    sha256 = "cc470e529fafb6165b5be3929ff2d99b38429b386ac100878687416603a67889",
-#    urls = [
-#        "http://localhost:3000/coverage_output_generator-v1.0.zip",
-#    ],
-#)
 
 load("@build_bazel_rules_nodejs//:index.bzl", "check_bazel_version", "node_repositories", "npm_install")
 

@@ -3,6 +3,7 @@ workspace(
     managed_directories = {
         "@npm": ["node_modules"],
         "@npm_subproject": ["subproject/node_modules"],
+        "@npm_ui": ["packages/ui/node_modules"],
     },
 )
 
@@ -62,6 +63,12 @@ npm_install(
     name = "npm_subproject",
     package_json = "//subproject:package.json",
     package_lock_json = "//subproject:package-lock.json",
+)
+
+npm_install(
+    name = "npm_ui",
+    package_json = "//packages/ui:package.json",
+    package_lock_json = "//packages/ui:package-lock.json",
 )
 
 load("@npm//:install_bazel_dependencies.bzl", "install_bazel_dependencies")

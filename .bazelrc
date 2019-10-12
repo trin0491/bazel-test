@@ -11,10 +11,19 @@ run --host_javabase=@local_jdk//:jdk --host_java_toolchain=@bazel_tools//tools/j
 # Instead, you should run `bazel info bazel-bin` to find out where the outputs went.
 build --symlink_prefix=dist/
 
+# Turn off legacy external runfiles
+# This prevents accidentally depending on this feature, which Bazel will remove.
+build --nolegacy_external_runfiles
+
 build --disk_cache=~/tmp/bazel
 #build --explain=bazel-explain.log --verbose_failures
 
+# npx bazel run --config=debug
+run:debug --define=DEBUG=1 -- --node_options=--inspect-brk
+
 test --test_output=errors
+test:debug --test_arg=--node_options=--inspect-brk --define=DEBUG=1
 
 # https://github.com/bazelbuild/rules_nodejs/wiki#migrating-to-rules_nodejs-030
 common --experimental_allow_incremental_repository_updates
+

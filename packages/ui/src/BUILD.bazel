@@ -18,8 +18,8 @@ ts_library(
 
 npm_package(
     name = "npm_package",
-    srcs = ["package.json"],
-    replacements = {"packages/ui/packages/common": ""},
+    srcs = [":package.json"],
+    replacements = {"packages/ui/src": ""},
     deps = [
         ":ui",
     ],

@@ -14,6 +14,7 @@ ts_library(
     name = "a",
     srcs = [":ts_src"],
     visibility = ["//:__subpackages__"],
+    node_modules = "@npm_core//typescript:typescript__typings",
     deps = [
         "//packages/core/src/b",
     ],
@@ -25,9 +26,10 @@ ts_library(
     srcs = glob(["*.spec.ts"]),
     visibility = ["//:__subpackages__"],
     tsconfig = "//:tsconfig-test",
+    node_modules = "@npm_core//typescript:typescript__typings",
     deps = [
         ":a",
         "//packages/core/src/b",
-        "@npm//@types/jasmine",
+        "@npm_core//@types/jasmine",
     ],
 )

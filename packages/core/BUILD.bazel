@@ -11,6 +11,7 @@ ts_library(
     srcs = ["index.ts"],
     module_name = "core",
     module_root = "index.ts",
+    node_modules = "@npm_core//typescript:typescript__typings",
     deps = [
         "//packages/core/src/a",
         "//packages/core/src/b",
@@ -42,7 +43,6 @@ terser_minified(
 npm_package(
     name = "npm_package",
     srcs = ["package.json"],
-    replacements = {"bazel_test/packages/core/": ""},
     deps = [
         ":bundle.umd",
         ":bundle.umd.min",
@@ -60,7 +60,7 @@ karma_web_test_suite(
         "//packages/core/src/a:test_lib",
         "//packages/core/src/b:test_lib",
         "//packages/core/src/c:test_lib",
-        "@npm//lodash-es:lodash-es__umd",
+        "@npm_core//lodash-es:lodash-es__umd",
         "@npm//karma-coverage-istanbul-instrumenter",
         "@npm//karma-coverage-istanbul-reporter",
         "@npm//karma-junit-reporter",

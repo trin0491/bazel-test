@@ -9,9 +9,10 @@ ts_library(
         ["*.ts"],
         exclude = ["*.spec.ts"],
     ),
+    node_modules = "@npm_core//typescript:typescript__typings",
     visibility = ["//:__subpackages__"],
     deps = [
-        "@npm//lodash-es"
+        "@npm_core//lodash-es"
     ],
 )
 
@@ -20,9 +21,10 @@ ts_library(
     testonly = 1,
     srcs = glob(["*.spec.ts"]),
     visibility = ["//:__subpackages__"],
+    node_modules = "@npm_core//typescript:typescript__typings",
     tsconfig = "//:tsconfig-test",
     deps = [
         ":c",
-        "@npm//@types/jasmine",
+        "@npm_core//@types/jasmine",
     ],
 )

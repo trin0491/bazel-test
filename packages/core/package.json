@@ -4,6 +4,11 @@
   "main": "bundle.umd.js",
   "module": "bundle.esm.js",
   "dependencies": {
-    
+    "lodash-es": "^4.17.15"
+  },
+  "devDependencies": {
+    "@types/jasmine": "3.4.3",
+    "@types/lodash": "~4.14.133",
+    "typescript": "^3.5.1"
   }
 }

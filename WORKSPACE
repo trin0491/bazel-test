@@ -2,7 +2,7 @@ workspace(
     name = "bazel_test",
     managed_directories = {
         "@npm": ["node_modules"],
-        "@npm_subproject": ["subproject/node_modules"],
+        "@npm_core": ["packages/core/node_modules"],
         "@npm_ui": ["packages/ui/node_modules"],
     },
 )
@@ -25,6 +25,12 @@ npm_install(
     name = "npm",
     package_json = "//:package.json",
     package_lock_json = "//:package-lock.json",
+)
+
+npm_install(
+    name = "npm_core",
+    package_json = "//packages/core:package.json",
+    package_lock_json = "//packages/core:package-lock.json",
 )
 
 npm_install(

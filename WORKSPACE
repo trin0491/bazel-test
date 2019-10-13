@@ -28,12 +28,6 @@ npm_install(
 )
 
 npm_install(
-    name = "npm_subproject",
-    package_json = "//subproject:package.json",
-    package_lock_json = "//subproject:package-lock.json",
-)
-
-npm_install(
     name = "npm_ui",
     package_json = "//packages/ui:package.json",
     package_lock_json = "//packages/ui:package-lock.json",

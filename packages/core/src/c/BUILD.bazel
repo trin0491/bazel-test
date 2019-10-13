@@ -1,11 +1,28 @@
 package(default_visibility = ["//visibility:private"])
 
 load("@npm_bazel_typescript//:index.bzl", "ts_library")
+load("@npm_bazel_karma//:index.bzl", "karma_web_test_suite")
 
 ts_library(
     name = "c",
-    srcs = glob(["*.ts"]),
+    srcs = glob(
+        ["*.ts"],
+        exclude = ["*.spec.ts"],
+    ),
     visibility = ["//:__subpackages__"],
     deps = [
+        "@npm//lodash-es"
+    ],
+)
+
+ts_library(
+    name = "test_lib",
+    testonly = 1,
+    srcs = glob(["*.spec.ts"]),
+    visibility = ["//:__subpackages__"],
+    tsconfig = "//:tsconfig-test",
+    deps = [
+        ":c",
+        "@npm//@types/jasmine",
     ],
 )

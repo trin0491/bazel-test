@@ -14,7 +14,7 @@ ts_library(
     ], exclude = ["src/**/*.spec.ts"]),
     node_modules = "@npm_ui//typescript:typescript__typings",
     deps = [
-        "@npm_ui//@types/lodash",
+        "@npm_ui//lodash-es",
     ],
 )
 
@@ -27,7 +27,6 @@ ts_library(
     deps = [
         ":ui",
         "@npm_ui//@types/jasmine",
-        "@npm_ui//@types/lodash",
     ],
 )
 
@@ -59,6 +58,7 @@ terser_minified(
     name = "bundle.umd.min",
     src = ":bundle.umd.js",
 )
+
 npm_package(
     name = "npm_package",
     srcs = [":package.json"],
@@ -69,16 +69,16 @@ npm_package(
     ],
 )
 
-#karma_web_test_suite(
-#    name = "test",
-#    config_file = "//:karma.conf.js",
-#    data = [
-#    ],
-#    deps = [
-#        ":test_lib",
-#        "@npm_ui//lodash",
-#        "@npm//karma-coverage-istanbul-instrumenter",
-#        "@npm//karma-coverage-istanbul-reporter",
-#        "@npm//karma-junit-reporter",
-#    ],
-#)
+karma_web_test_suite(
+    name = "test",
+    config_file = "//:karma.conf.js",
+    data = [
+    ],
+    deps = [
+        ":test_lib",
+        "@npm_ui//lodash-es:lodash-es__umd",
+        "@npm//karma-coverage-istanbul-instrumenter",
+        "@npm//karma-coverage-istanbul-reporter",
+        "@npm//karma-junit-reporter",
+    ],
+)

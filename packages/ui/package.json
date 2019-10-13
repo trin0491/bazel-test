@@ -5,6 +5,7 @@
     "lodash": "~4.17.11"
   },
   "devDependencies": {
+    "@types/jasmine": "3.4.3",
     "@types/lodash": "~4.14.133",
     "typescript": "^3.5.1"
   }

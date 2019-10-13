@@ -1,14 +1,17 @@
 package(default_visibility = ["//visibility:private"])
 
 load("@build_bazel_rules_nodejs//:index.bzl", "npm_package")
+load("@npm_bazel_rollup//:index.bzl", "rollup_bundle")
 load("@npm_bazel_typescript//:index.bzl", "ts_library")
+load("@npm_bazel_terser//:index.bzl", "terser_minified")
+load("@npm_bazel_karma//:index.bzl", "karma_web_test_suite")
 
 ts_library(
     name = "ui",
     srcs = glob([
         "*.ts",
         "src/**/*.ts",
-    ]),
+    ], exclude = ["src/**/*.spec.ts"]),
     node_modules = "@npm_ui//typescript:typescript__typings",
     deps = [
         "@npm_ui//@types/lodash",
@@ -16,11 +19,68 @@ ts_library(
     ],
 )
 
-npm_package(
-    name = "npm_package",
-    srcs = [":package.json"],
-    replacements = {"packages/ui/src": ""},
+ts_library(
+    name = "test_lib",
+    testonly = 1,
+    srcs = glob(["src/**/*.spec.ts"]),
+    node_modules = "@npm_ui//typescript:typescript__typings",
+    tsconfig = "//:tsconfig-test",
+    deps = [
+        ":ui",
+        "@npm_ui//@types/jasmine",
+        "@npm_ui//@types/lodash",
+        "@npm_ui//lodash",
+    ],
+)
+
+rollup_bundle(
+    name = "bundle.umd",
+    config_file = "rollup.config.js",
+    format = "umd",
+    srcs = [
+    ],
+    entry_point = ":index.ts",
     deps = [
         ":ui",
     ],
 )
+
+rollup_bundle(
+    name = "bundle.esm",
+    config_file = "rollup.config.js",
+    format = "esm",
+    srcs = [
+    ],
+    entry_point = ":index.ts",
+    deps = [
+        ":ui",
+    ],
+)
+
+terser_minified(
+    name = "bundle.umd.min",
+    src = ":bundle.umd.js",
+)
+npm_package(
+    name = "npm_package",
+    srcs = [":package.json"],
+    deps = [
+        ":ui",
+        ":bundle.umd.min",
+        ":bundle.esm",
+    ],
+)
+
+#karma_web_test_suite(
+#    name = "test",
+#    config_file = "//:karma.conf.js",
+#    data = [
+#    ],
+#    deps = [
+#        ":test_lib",
+#        "@npm_ui//lodash",
+#        "@npm//karma-coverage-istanbul-instrumenter",
+#        "@npm//karma-coverage-istanbul-reporter",
+#        "@npm//karma-junit-reporter",
+#    ],
+#)

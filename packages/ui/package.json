@@ -2,7 +2,7 @@
   "name": "ui",
   "version": "1.0.0",
   "dependencies": {
-    "lodash": "~4.17.11"
+    "lodash-amd": "^4.17.15"
   },
   "devDependencies": {
     "@types/jasmine": "3.4.3",

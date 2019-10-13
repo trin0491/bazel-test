@@ -15,7 +15,6 @@ ts_library(
     node_modules = "@npm_ui//typescript:typescript__typings",
     deps = [
         "@npm_ui//@types/lodash",
-        "@npm_ui//lodash",
     ],
 )
 
@@ -29,7 +28,6 @@ ts_library(
         ":ui",
         "@npm_ui//@types/jasmine",
         "@npm_ui//@types/lodash",
-        "@npm_ui//lodash",
     ],
 )
 

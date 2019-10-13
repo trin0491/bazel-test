@@ -6,11 +6,11 @@ module.exports = {
     name: "ui",
     format: "umd",
     globals: {
-      "lodash": "_"
+      "lodash-es": "_"
     }
   },
   external: [
-    'lodash'
+    'lodash-es'
   ],
   plugins: [
     node({

@@ -30,29 +30,22 @@ ts_library(
     ],
 )
 
-rollup_bundle(
-    name = "bundle.umd",
-    config_file = "rollup.config.js",
-    format = "umd",
-    srcs = [
-    ],
-    entry_point = ":index.ts",
-    deps = [
-        ":ui",
-    ],
-)
-
-rollup_bundle(
-    name = "bundle.esm",
-    config_file = "rollup.config.js",
-    format = "esm",
-    srcs = [
-    ],
-    entry_point = ":index.ts",
-    deps = [
-        ":ui",
-    ],
-)
+# lodash is externalised and not bundled with rollup
+[
+    rollup_bundle(
+        name = "bundle.%s" % format,
+        config_file = "rollup.config.js",
+        format = format,
+        entry_point = ":index.ts",
+        deps = [
+            ":ui",
+        ],
+    )
+    for format in [
+        "esm",
+        "umd",
+    ]
+]
 
 terser_minified(
     name = "bundle.umd.min",
@@ -64,6 +57,7 @@ npm_package(
     srcs = [":package.json"],
     deps = [
         ":ui",
+        ":bundle.umd",
         ":bundle.umd.min",
         ":bundle.esm",
     ],

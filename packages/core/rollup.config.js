@@ -4,7 +4,10 @@ const commonjs = require('rollup-plugin-commonjs');
 module.exports = {
   output: {
     name: "core",
-    format: "umd"
+    format: "umd",
+    globals: {
+      "lodash-es": "_"
+    }
   },
   plugins: [
     node({

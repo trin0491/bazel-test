@@ -24,7 +24,17 @@ module.exports = function(config) {
     },
     coverageIstanbulReporter: {
       reports: ['text-summary', 'html', 'lcov'],
-      dir: path.join(OUTPUT_DIR, "coverage")
+      dir: path.join(OUTPUT_DIR, "coverage"),
+      thresholds: {
+        emitWarning: false, // set to `true` to not fail the test command when thresholds are not met
+        // thresholds for all files
+        global: {
+          statements: 68,
+          lines: 68,
+          branches: 36,
+          functions: 50
+        }
+      },
     }
   })
 };

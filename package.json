@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "bazel build //...",
+    "build": "bazel build //... && gulp build",
     "test": "bazel test //...",
     "watch:test": "ibazel test //...",
     "bazel:format": "find . -type f \\( -name WORKSPACE -or -name BUILD.bazel \\) ! -path \"*/node_modules/*\" | xargs buildifier",

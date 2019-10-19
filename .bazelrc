@@ -18,6 +18,7 @@ build --nolegacy_external_runfiles
 build --disk_cache=~/tmp/bazel
 build --verbose_failures --define=DEBUG=1
 #build --explain=bazel-explain.log
+#build --spawn_strategy=local
 
 # npx bazel run --config=debug
 run:debug --define=DEBUG=1 -- --node_options=--inspect-brk

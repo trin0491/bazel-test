@@ -16,7 +16,8 @@ build --symlink_prefix=dist/
 build --nolegacy_external_runfiles
 
 build --disk_cache=~/tmp/bazel
-#build --explain=bazel-explain.log --verbose_failures
+build --verbose_failures --define=DEBUG=1
+#build --explain=bazel-explain.log
 
 # npx bazel run --config=debug
 run:debug --define=DEBUG=1 -- --node_options=--inspect-brk

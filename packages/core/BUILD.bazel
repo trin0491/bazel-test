@@ -10,7 +10,6 @@ ts_library(
     name = "core",
     srcs = ["index.ts"],
     module_name = "core",
-    module_root = "index.ts",
     node_modules = "@npm_core//typescript:typescript__typings",
     deps = [
         "//packages/core/src/a",

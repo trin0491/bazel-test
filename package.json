@@ -20,7 +20,7 @@
     "@bazel/terser": "0.38.3",
     "@bazel/typescript": "0.38.3",
     "@types/jasmine": "^3.4.3",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "jasmine": "^3.5.0",
     "karma": "^4.3.0",
     "karma-coverage-istanbul-instrumenter": "~1.0.1",

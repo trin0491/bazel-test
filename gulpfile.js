@@ -8,4 +8,6 @@ gulp.task('copy:core', () => {
     .pipe(gulp.dest('./dist/install/core', {dirMode: "0755", mode: "0644"}));
 });
 
-gulp.task('build', ['copy:core']);
+gulp.task('build', gulp.series('copy:core', (done) => {
+  done();
+}));
